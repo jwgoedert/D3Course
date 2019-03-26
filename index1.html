@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Hello Worlds!!!</title>
+	<title>Raw JS vs D3</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -10,8 +10,34 @@
 </head>
 <body>
 	<script>
-		var h1=d3.select("body").append("h1").text("Hello Planets!");		
-		console.log(h1);
-	</script>
+    //Raw JS 
+    //Creating elements
+    let body = document.body;
+    let paragraph = document.createElement('p');
+    let paragraph_text = document.createTextNode("My favorite color is Orange!");
+
+    paragraph.appendChild(paragraph_text);
+    body.appendChild(paragraph);
+    
+    //With D3
+    let paragraph2 = d3.select('body')
+      .append('p')
+      .text("My favorite color is blue.");
+
+    //Styles vs. Attributes
+    //Attribute JS
+    paragraph.setAttribute("class", "color fav_color");
+  
+    //Style JS
+    paragraph.style.color = "orange";
+
+    //Attribute D3
+    paragraph2.attr("class", "color");
+  
+    //Style D3
+    paragraph2.style("color", "blue");
+
+    
+  </script>
 </body>
 </html>
