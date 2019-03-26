@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>SHAPES</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<script src="d3.min.js"></script>
+</head>
+<body>
+  <div id="content">
+    <h1>SHAPES</h1>
+  </div>
+	<script>
+    const shapes = [
+    {
+      "name": "Triangle",
+      "symmetryGroup": "Dihedral", 
+      "internalAngle": "60", 
+      "sides": 3,
+      "properties": "Convex, cyclic, equilateral, isogonal, isotoxal"
+    },
+    {
+      "name": "Square",
+      "symmetryGroup": "Dihedral", 
+      "internalAngle": "90", 
+      "sides": 4,
+      "properties": "	Convex, cyclic, equilateral, isogonal, isotoxal"
+    },
+    {
+      "name": "Pentagon",
+      "symmetryGroup": "Dihedral`", 
+      "internalAngle": "108", 
+      "sides": 5,
+      "properties": "Convex, cyclic, equilateral, isogonal, isotoxal"
+    },
+    {
+      "name": "Hexagon",
+      "symmetryGroup": "Dihedral", 
+      "internalAngle": "120", 
+      "sides": 6,
+      "properties": "Convex, cyclic, equilateral, isogonal, isotoxal"
+    },
+    {
+      "name": "Heptagon",
+      "symmetryGroup": "Dihedral", 
+      "internalAngle": "128.571", 
+      "sides": 7,
+      "properties": "Convex, cyclic, equilateral, isogonal, isotoxal"
+    },
+    {
+      "name": "Octagon",
+      "symmetryGroup": "Dihedral", 
+      "internalAngle": "135", 
+      "sides": 8,
+      "properties": "Convex, cyclic, equilateral, isogonal, isotoxal"
+    },
+  ]
+
+  //Creating Elements
+    let div = d3.select("div#content")
+      .selectAll("div")
+      .data(shapes)
+      .enter().append("div").attr("class", "shapes");
+
+      div.append('h2').text(d => d.name);
+      div.append('img').attr("src", d => 'assets/images/' + d.name.toLowerCase() + '.png'); 
+      div.append('h3').text(d => `SIDES: ${d.sides}`);
+      div.append('h3').text(d => d.internalAngle);
+      // div.append('h3').text(d => d.properties);
+
+  </script>
+  <style>
+    body {
+      font-size: 1rem;
+      line-height: 1.5rem;
+      font-family: Arial, Helvetica, sans-serif;
+      color: coral;
+    }
+
+    div#content {
+      margin: auto;
+      width: 800px;
+    }
+
+    div#content > h1 {
+      margin: 20px;
+      padding-bottom: 2rem;
+      font-size: 4rem;
+    }
+
+    div#content > h2 {
+      margin: 20px;
+    }
+
+    div#content > div.shapes > * {
+      margin: 0;
+      width: 200px;
+    }
+
+    div#content > div.shapes {
+      display: inline-block;
+      /* padding: 1rem 1.25rem; */
+      margin: .75 rem;
+      vertical-align: top;
+      width: 30%;
+      padding-bottom: 5rem;
+    }
+
+    div#content div.shapes > img {
+      width: 200px;     
+    }
+/* 
+    h1 {
+      padding-bottom: 3rem;
+      font-size: 32px;
+    } */
+
+    h2 {
+      padding-bottom: 1.5rem;
+    }
+
+  </style>
+</body>
+</html>

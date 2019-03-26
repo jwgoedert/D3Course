@@ -37,7 +37,37 @@
     //Style D3
     paragraph2.style("color", "blue");
 
-    
+    //Selecting Multiple Elements
+    //JS
+    let allParagraphs = document.getElementsByTagName('p');
+
+    for(let i =0; i < allParagraphs.length; i++) {
+      allParagraphs[i].style.fontSize = ("20px");
+    };
+
+    //D3
+    let allParagraphs2 = d3.selectAll("p")
+      .style("font-family", "sans-serif");
+
+    //Toggling Classes
+    //JS
+    let classes = paragraph.className;
+    let classesArray = classes.split(' ');
+
+    let filteredClasses = classesArray.filter(function(c) {
+      console.log('classes', classes);
+      console.log('classesArray', classesArray);
+      console.log('c', c);
+      return c != "fav_`color";
+    }); 
+
+    paragraph.className = filteredClasses.join(' ');
+    console.log('classname', paragraph.className);
+
+    //D3
+    paragraph2.classed("fav_color", true);
+
+
   </script>
 </body>
 </html>
