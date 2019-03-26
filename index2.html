@@ -59,6 +59,10 @@
   ]
 
   //Creating Elements
+    let color = d3.scaleLinear()
+      .domain([3,8])
+      .range(["white", "black"])
+
     let div = d3.select("div#content")
       .selectAll("div")
       .data(shapes)
@@ -69,6 +73,34 @@
       div.append('h3').text(d => `SIDES: ${d.sides}`);
       div.append('h3').text(d => d.internalAngle);
       // div.append('h3').text(d => d.properties);
+
+      div.style("background-color", d => color(d.sides)); 
+
+      //Creating a legend
+      let legenDiv = d3.select("div#content")
+        .append("div")
+        .attr("id", "legend");
+
+      legenDiv.append("h2").text("Scale of Complexity");  
+
+      let span = d3.select("div#content")
+        .selectAll("span")
+        .data(d3.range(3,9))
+        .enter().append("span");
+
+      span.style("background-color", d => color(d))
+        .style("width", "60px")
+        .style("height", "60px")
+        .style("display", "inline-block")
+        .style("text-align", "left")
+        .style("vertical-align", "middle")
+        .text(d => {
+          if (d == 3 || d == 5 || d == 8) {
+            return d;
+          }
+        });        
+
+
 
   </script>
   <style>
@@ -101,7 +133,6 @@
 
     div#content > div.shapes {
       display: inline-block;
-      /* padding: 1rem 1.25rem; */
       margin: .75 rem;
       vertical-align: top;
       width: 30%;
@@ -109,13 +140,9 @@
     }
 
     div#content div.shapes > img {
-      width: 200px;     
+      width: 60%;
+      margin-left: 20%;     
     }
-/* 
-    h1 {
-      padding-bottom: 3rem;
-      font-size: 32px;
-    } */
 
     h2 {
       padding-bottom: 1.5rem;
